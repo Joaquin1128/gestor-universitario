@@ -1,0 +1,34 @@
+[
+  {
+    "id_materia": 2,
+	"id_alumno": 2,
+	"id_comision": 1,
+	"f_inscripcion": "2024-06-26 15:30:00",
+	"nota": 9,
+	"estado": "aceptada"
+  },
+  {
+    "id_materia": 2,
+	"id_alumno": 2,
+	"id_comision": 1,
+	"f_inscripcion": "2024-02-24 15:25:00",
+	"nota": 6,
+	"estado": "aceptada"
+  },
+  {
+    "id_materia": 2,
+	"id_alumno": 2,
+	"id_comision": 1,
+	"f_inscripcion": "2024-02-22 14:40:00",
+	"nota": 9,
+	"estado": "aceptada"
+  },
+  {
+    "id_materia": 2,
+	"id_alumno": 2,
+	"id_comision": 1,
+	"f_inscripcion": "2024-06-21 12:30:00",
+	"nota": 7,
+	"estado": "aceptada"
+  }
+]
