@@ -27,6 +27,7 @@ Luciano Rodriguez <luciano.rodriguez2201@mail.com>
      - [email_aplicacion_cupos_trg](#email_aplicacion_cupos_trg)
      - [email_inscripcion_lista_espera_trg](#email_inscripcion_lista_espera_trg)
      - [email_cierre_cursada_trg](#email_cierre_cursada_trg)
+3. [Conclusiones](#conclusiones)
 
 ## Introducción
 
@@ -153,7 +154,7 @@ Este trigger se dispara cada vez que se realiza una actualización en la tabla `
 
 ### Conclusiones
 
-En este trabajo práctico, asumimos el desafío de modelar una base de datos para la inscripción de alumnos en materias y el registro de sus notas a través de un desarrollo colaborativo. Para lograrlo, tuvimos que aprender y adaptar el lenguaje Go al uso de PostgreSQL, lo cual representó un reto y una valiosa oportunidad de aprendizaje.
+En este trabajo práctico asumimos el desafío de modelar una base de datos para la inscripción de alumnos en materias y el registro de sus notas a través de un desarrollo colaborativo. Para lograrlo, tuvimos que aprender y adaptar el lenguaje Go al uso de PostgreSQL, lo cual representó un reto y una valiosa oportunidad de aprendizaje.
 
 Durante la implementación, trabajamos en varias funciones y triggers que emulan las operaciones necesarias dentro del sistema de inscripciones. Ajustamos manualmente diversas partes del código para asegurar su correcto funcionamiento y para que las diferentes acciones y actualizaciones en la base de datos se realizaran de manera adecuada.
 
