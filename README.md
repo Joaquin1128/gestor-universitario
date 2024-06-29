@@ -16,7 +16,7 @@ Luciano Rodriguez <luciano.rodriguez2201@mail.com>
    - [Funciones](#funciones)
      - [inscripcion_materia](#inscripcion_materia)
      - [apertura_inscripcion](#apertura_inscripcion)
-     - [baja_de_nscripcion](#baja_de_inscripcion)
+     - [baja_de_inscripcion](#baja_de_inscripcion)
      - [cierre_de_inscripcion](#cierre_de_inscripcion)
      - [aplicacion_cupos](#aplicacion_cupos)
      - [ingreso_nota](#ingreso_nota)
