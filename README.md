@@ -17,13 +17,15 @@ Luciano Rodriguez <luciano.rodriguez2201@mail.com>
      - [inscripcion_materia](#inscripcion_materia)
      - [apertura_inscripcion](#apertura_inscripcion)
      - [baja_de_nscripcion](#baja_de_inscripcion)
-     - [cierre_de_nscripcion](#cierre_de_inscripcion)
+     - [cierre_de_inscripcion](#cierre_de_inscripcion)
      - [aplicacion_cupos](#aplicacion_cupos)
      - [ingreso_nota](#ingreso_nota)
+     - [cierre_cursada](#ingreso_nota)
    - [Triggers](#triggers)
      - [email_alta_inscripcion_trg](#email_alta_inscripcion_trg)
      - [email_alta_baja_trg](#email_baja_inscripcion_trg)
      - [email_aplicacion_cupos_trg](#email_aplicacion_cupos_trg)
+     - [email_inscripcion_lista_espera_trg](#email_inscripcion_lista_espera_trg)
      - [email_cierre_cursada_trg](#email_cierre_cursada_trg)
 
 ## Introducción
@@ -112,6 +114,20 @@ Se deberá incluir la lógica que reciba un id de alumno, un id de materia, un i
 - Que la nota se encuentre en el rango de 0 (cero) a 10 (diez), ambos valores inclusive. En caso de que no se cumpla, se debe cargar un error con el mensaje `nota no válida:[nota]`, reemplazando en el mensaje [nota] por el valor que se recibió como parámetro.
 
 Si las validaciones pasan correctamente, se deberá actualizar la nota del alumno en la fila correspondiente de la tabla cursada.
+
+#### cierre_cursada
+
+Se deberá incluir la lógica que reciba un id de materia y un id de comisión, y que devuelva true si se logra completar el cierre de cursada de la comisión, o false si se rechaza. El procedimiento deberá validar los siguientes elementos antes de confirmar el cierre de la cursada:
+
+- Que exista un período en estado de cursada. Si no se cumple, se carga un error con el mensaje `período de cursada cerrado`.
+- Que el id de la materia exista. Si no se cumple, se carga un error con el mensaje `id de materia no válido`.
+- Que el id de comisión exista para la materia. Si no se cumple, se carga un error con el mensaje `id de comisión no válido para la materia`.
+- Que la comisión tenga al menos un alumno inscripto en la tabla `cursada`, sin importar su estado de inscripción. Si no se cumple, se carga un error con el mensaje `comisión sin alumnos inscriptos`.
+- Que todos los alumnos de la comisión en estado 'aceptado' tengan informada su nota de cursada. Si no se cumple, se carga un error con el mensaje `la carga de notas no está completa`.
+
+Si todas las validaciones son exitosas, se ejecutan las siguientes acciones de forma completa:
+- Se inserta una fila en la tabla `historia_academica` por cada alumno de la comisión que se encuentre en estado 'aceptado'. El semestre corresponde al período con estado de cursada, y el estado de la historia académica dependerá de la nota de regularidad (0: ausente, 1-3: reprobada, 4-6: regular, 7-10: aprobada). La nota final se graba solo si el estado es 'aprobada', siendo igual a la nota de regularidad en ese caso.
+- Después de insertar en la historia académica todos los alumnos en estado 'aceptado', se eliminan de la tabla `cursada` todos los registros de esa comisión, independientemente de su estado.
 
 ### Triggers
 
